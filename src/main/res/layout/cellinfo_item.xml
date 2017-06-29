@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/line_number_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/subway_station_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+      <!--  <LinearLayout
+            android:id="@+id/lac_cid_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="horizontal">-->
+
+         <TextView
+             android:id="@+id/lac_cid"
+             android:gravity="center"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="2"
+             />
+            <!--<TextView
+                android:id="@+id/lac_cid_current"
+                android:layout_marginLeft="5dp"
+                android:visibility="invisible"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/result"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />-->
+        <!--</LinearLayout>-->
+    </LinearLayout>
+</RelativeLayout>

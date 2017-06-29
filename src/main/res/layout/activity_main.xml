@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/activity_main"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.lizhi.chenxiayu.subwayalarm.MainActivity">
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:id="@+id/title"
+        android:text="@string/inner_test"
+        android:textSize="25sp"
+        android:layout_centerHorizontal="true"/>
+    <LinearLayout
+        android:layout_below="@id/title"
+        android:layout_marginTop="35dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/subway_test"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/subway_test"/>
+        <Button
+            android:id="@+id/subway_verify"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/subway_verify"/>
+        <Button
+            android:id="@+id/submit_data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/submit_data"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:id="@+id/service"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="联系客服"
+                android:textColor="@color/color_b0b8b2"
+                android:textSize="14dp" />
+            <View
+                android:layout_width="1dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/color_eeeeee"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="关于我们"
+                android:textColor="@color/color_b0b8b2"
+                android:textSize="14dp" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/color_b0b8b2"
+            android:textSize="14dp"
+            android:text="@string/version"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

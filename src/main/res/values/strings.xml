@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">SubwayAlarm</string>
+    <string name="inner_test">内部测试软件</string>
+    <string name="subway_test">站内路测</string>
+    <string name="subway_verify">站内验证</string>
+    <string name="submit_data">数据上传</string>
+    <string name="info_title">站内路测</string>
+    <string name="recode">记录</string>
+    <string name="city">地区：</string>
+    <string name="line_number">线号：</string>
+    <string name="subway_station">站点： </string>
+    <string name="verify_title">站内验证</string>
+    <string name="submit_info_update">设置闹钟</string>
+    <string name="submit_info_get">刷新</string>
+    <string name="correct">正确：</string>
+    <string name="current">当前：</string>
+    <string name="version">版本号：</string>
+</resources>
