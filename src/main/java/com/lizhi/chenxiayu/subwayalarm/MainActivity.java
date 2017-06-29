@@ -43,7 +43,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
     }
 
     private void initData() {
-        versionNumber.setText(versionNumber.getText()+getVersion());
+        if(versionNumber.getText()!=null){
+            versionNumber.setText(versionNumber.getText()+getVersion());
+        }
     }
 
     private String getVersion() {

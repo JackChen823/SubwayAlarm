@@ -100,8 +100,10 @@ public class CellVerifyActivity extends Activity implements View.OnClickListener
                         if(isFinishing()&&alertDialog!=null){
                             alertDialog.dismiss();
                         }else if (isAlarm ==true){
+                            if(alertDialog!=null){
+                                alertDialog.dismiss();
+                            }
                             showAlertDialog(subStation);
-                            Log.i("chenxiayu","CellVerifyActivity----startAlarm---");
                             startAlarm();
                         }
                     }
@@ -110,6 +112,8 @@ public class CellVerifyActivity extends Activity implements View.OnClickListener
 
         }
     };
+    private Button reverseBt;
+    private Boolean isReverse = false;
 
     private void stopAlarm(AlarmManager am) {
         Intent intent = new Intent(CellVerifyActivity.this,AlarmReceiver.class);
@@ -189,6 +193,9 @@ public class CellVerifyActivity extends Activity implements View.OnClickListener
         subwayInfo = (TextView) findViewById(R.id.subway_info);
         subwayInfoCurrent = (TextView) findViewById(R.id.subway_info_current);
 
+        reverseBt = (Button) findViewById(R.id.reversebt);
+        reverseBt.setOnClickListener(this);
+
 
         if(GetCellInfo.beans.getCell_id()!=null){
             eNodeBID = util.convertCellID(Integer.parseInt(GetCellInfo.beans.getCell_id(),10));
@@ -225,6 +232,18 @@ public class CellVerifyActivity extends Activity implements View.OnClickListener
                 isAlarm = false;
                 telephonyManager.listen(new CellLocationChangedListner(),PhoneStateListener.LISTEN_CELL_LOCATION);
                 break;
+            case R.id.reversebt:
+                if(!isReverse){
+                    Toast.makeText(getBaseContext(),"反向",Toast.LENGTH_LONG).show();
+                    isReverse = true;
+                    reverseBt.setText("正向");
+                    lineNumber.setOnItemSelectedListener(new LineNumberSpinnerSelectedListener());
+                }else {
+                    isReverse = false;
+                    reverseBt.setText("反向");
+                    lineNumber.setOnItemSelectedListener(new LineNumberSpinnerSelectedListener());
+                }
+                break;
 
         }
     }
@@ -235,13 +254,10 @@ public class CellVerifyActivity extends Activity implements View.OnClickListener
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             if(GetCellInfo.beans.getLinenumber().equals(lineNumbers[0])){
-                Toast.makeText(getBaseContext(),subwayStations[position],Toast.LENGTH_LONG).show();
                 GetCellInfo.beans.setSubwaystation(subwayStations[position]);
             }else if(GetCellInfo.beans.getLinenumber().equals(lineNumbers[1])){
-                Toast.makeText(getBaseContext(),subwayStations_14[position],Toast.LENGTH_LONG).show();
                 GetCellInfo.beans.setSubwaystation(subwayStations_14[position]);
             }else{
-                Toast.makeText(getBaseContext(),subwayStations_10[position],Toast.LENGTH_LONG).show();
                 GetCellInfo.beans.setSubwaystation(subwayStations_10[position]);
             }
             Cursor result = db.queryByLineAndStation(getBaseContext(),GetCellInfo.beans.getSubwaystation(),GetCellInfo.beans.getLinenumber());
@@ -269,11 +285,25 @@ public class CellVerifyActivity extends Activity implements View.OnClickListener
             GetCellInfo.beans.setCity("北京");
             GetCellInfo.beans.setLinenumber(lineNumbers[position]);
             if(lineNumbers[position].equals(lineNumbers[0])){
-                subwayStationAdapter = new ArrayAdapter<String>(getBaseContext(),R.layout.support_simple_spinner_dropdown_item,subwayStations);
+                if(isReverse){
+                    subwayStationAdapter = new ArrayAdapter<String>(getBaseContext(),R.layout.support_simple_spinner_dropdown_item,util.swap(subwayStations));
+                }else {
+                    subwayStationAdapter = new ArrayAdapter<String>(getBaseContext(),R.layout.support_simple_spinner_dropdown_item,subwayStations);
+                }
             }else if(lineNumbers[position].equals(lineNumbers[1])){
-                subwayStationAdapter = new ArrayAdapter<String>(getBaseContext(),R.layout.support_simple_spinner_dropdown_item,subwayStations_14);
+                if(isReverse){
+                    subwayStationAdapter = new ArrayAdapter<String>(getBaseContext(),R.layout.support_simple_spinner_dropdown_item,util.swap(subwayStations_14));
+                }else {
+                    subwayStationAdapter = new ArrayAdapter<String>(getBaseContext(),R.layout.support_simple_spinner_dropdown_item,subwayStations_14);
+                }
+
             }else {
-                subwayStationAdapter = new ArrayAdapter<String>(getBaseContext(),R.layout.support_simple_spinner_dropdown_item,subwayStations_10);
+                if(isReverse){
+                    subwayStationAdapter = new ArrayAdapter<String>(getBaseContext(),R.layout.support_simple_spinner_dropdown_item,util.swap(subwayStations_10));
+                }else {
+                    subwayStationAdapter = new ArrayAdapter<String>(getBaseContext(),R.layout.support_simple_spinner_dropdown_item,subwayStations_10);
+                }
+
             }
             subwayStation.setAdapter(subwayStationAdapter);
             subwayStation.setOnItemSelectedListener(new SpinnerSelectedListener());
@@ -327,7 +357,9 @@ public class CellVerifyActivity extends Activity implements View.OnClickListener
                 Log.i("chenxiayu","GetCellInfo.beans.getLac()---"+GetCellInfo.beans.getLac());
                 Log.i("chenxiayu","lac---"+lac);
                 //Toast.makeText(getBaseContext(),"beans.getLac().equals(lac)="+(GetCellInfo.beans.getLac().equals(lac)),Toast.LENGTH_LONG).show();
-                new Thread(runnable).start();
+                if(isAlarm == true){
+                    new Thread(runnable).start();
+                }
             }
             else {
                 Toast.makeText(getBaseContext(), "Location。。。空", Toast.LENGTH_LONG).show();

@@ -15,4 +15,5 @@
     <string name="correct">正确：</string>
     <string name="current">当前：</string>
     <string name="version">版本号：</string>
+    <string name="reverse">反向</string>
 </resources>

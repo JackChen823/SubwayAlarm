@@ -75,27 +75,27 @@
                 android:layout_weight="2">
 
             </android.support.v7.widget.AppCompatSpinner>
+            <Button
+                android:id="@+id/reversebt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/reverse"/>
         </LinearLayout>
 
     </LinearLayout>
-    <LinearLayout
-        android:layout_below="@id/subway_info_head"
-        android:layout_above="@+id/subway_info_foot"
-        android:id="@+id/subway_info_body"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+
         <TextView
             android:id="@+id/get_date_verify"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+            android:layout_below="@id/subway_info_head"
+            android:layout_centerHorizontal="true"
+            />
         <ListView
             android:id="@+id/list"
+            android:layout_below="@id/get_date_verify"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
+            android:layout_height="wrap_content" />
 
     <LinearLayout
         android:id="@+id/subway_info_foot"

@@ -102,4 +102,16 @@ public class util {
         Matcher matcher = p.matcher(tle);
         return matcher.matches();
     }
+    /*
+    反转数组
+     */
+    public static String[] swap(String array[]){
+        int len = array.length;
+        for(int i=0;i<len/2;i++){
+            String tmp = array[i];
+            array[i] = array[len-1-i];
+            array[len-1-i] = tmp;
+        }
+        return array;
+    }
 }
