@@ -48,7 +48,7 @@ public class CellInfoActivity extends Activity implements View.OnClickListener{
     private static final  String[] subwayStations ={"宋家庄","肖村","小红门","旧宫","亦庄桥","亦庄文化园","万源街","荣京东街","荣昌东街","同济南路","经海路","次渠南","次渠"};
     private static final String[] subwayStations_14 ={"善各庄","来广营","东湖渠","望京","阜通","望京南","将台","东风北桥","枣营","朝阳公园","金台路","大望路","九龙山","北工大西门","十里河","方庄","蒲黄榆","景泰","永定门外","北京南站"};
     private static final String[] subwayStations_10 ={"车道沟","长春桥","火器营","巴沟","苏州街","海淀黄庄","知春里","知春路","西土城","牡丹园","健德门","北土城","安贞门","惠新西街南口","芍药居","太阳宫","三元桥","亮马桥","农业展览馆","团结湖",
-            "呼家楼","金台夕照","国贸","双井","劲松","潘家园","十里河","分钟寺","成寿寺","宋家庄","石榴庄","大红门","角门东","角门西","草桥","纪家庙","首经贸","丰台站","泥洼","西局","六里桥","莲花桥","公主坟","西钓鱼台","慈寿寺"};
+            "呼家楼","金台夕照","国贸","双井","劲松","潘家园1","十里河","分钟寺","成寿寺","宋家庄","石榴庄","大红门","角门东","角门西","草桥","纪家庙","首经贸","丰台站","泥洼","西局","六里桥","莲花桥","公主坟","西钓鱼台","慈寿寺"};
     private static final String[] lineNumbers = new String[]{"亦庄线","14号线","10号线"};
     private ArrayAdapter<String> subwayStationAdapter ;
     private ArrayAdapter<String> cityAdapter;
